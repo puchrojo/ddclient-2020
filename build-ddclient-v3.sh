@@ -43,7 +43,8 @@ cm cp -r ../ddclient/debian ./
 echo "todo make with gbp dch"
 gbp dch
 echo "doch nicht"
-cm cp  /tmp/changelog-v3 debian/changelog
+#cm cp  /tmp/changelog-v3 debian/changelog
+
 
 # echo "Manuell change the version in changelog"
 # ed -s ./debian/changelog  << 'EOF'
@@ -60,7 +61,11 @@ git commit -m"Build from git tag 3.8.3"
 
 echo "ignore patch or add it"
 cm dpkg-source --commit
-cm git add *
+
+#cm gbp pq import
+
+cm git add .
+git add .pc
 git commit -m"Build from git tag 3.8.3 (dpkg-source)"
 
 cm gbp buildpackage
